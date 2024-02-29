@@ -15,6 +15,10 @@ const ProfesionSelector = ({
         const profesionName: string = e.target.value;
 
         const profesion = profesions[profesionName];
+        if (!profesion) {
+            setInfoMessage("Choose a profession and number of players");
+            return;
+        }
         setInfoMessage(profesion.desc);
         setcurrentProfesion(profesion);
     }

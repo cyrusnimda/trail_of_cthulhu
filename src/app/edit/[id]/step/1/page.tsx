@@ -52,7 +52,7 @@ export default function EditStep1Page() {
             <CreditSelector setInfoMessage={setInfoMessage} currentProfesion={currentProfesion} />
           </div>
 
-          <button type="button" onClick={onSaveClick} className="bg-[#8d8565] border rounded px-2 text-white " >Save and continue</button>
+          <button type="button" onClick={onSaveClick} className="bg-[#8d8565] border rounded px-2 text-white m-auto hover:bg-amber-50 hover:text-[#180f00] hover:border-black" >Save and continue</button>
 
         </form>
       </div>
