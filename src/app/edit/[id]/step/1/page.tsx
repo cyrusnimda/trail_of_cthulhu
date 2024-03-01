@@ -1,28 +1,35 @@
 'use client'
 
-import { ProfesionDesc } from "@/model/game_data";
 import ProfesionSelector from "@/components/ProfesionSelector";
 import CreditSelector from "@/components/CreditSelector";
+import PlayersSelector from "@/components/PlayersSelector";
 import { useState } from "react";
+import { UUID } from "crypto";
+import { getCharacter, saveCharacter } from "@/model/repository";
 
-const onSaveClick = () => {
+export default function EditStep1Page(params: any) {
+  const uuid = params.params.id as UUID;
+  const character = getCharacter(uuid);
+  if (!character) return <div>Character not found</div>;
 
-}
-
-const updateCredit = (profesion: ProfesionDesc) => {
-  const creditElement = document.getElementById("credit");
-  if (!creditElement) return;
-
-  let html = "";
-  for (let i = profesion.minCredit; i <= profesion.maxCredit; i++) {
-    html += `<option value=${i}>${i}</option>`;
-  }
-  creditElement.innerHTML = html;
-}
-
-export default function EditStep1Page() {
   const [infoMessage, setInfoMessage] = useState<string>("Choose a profession and number of players");
-  const [currentProfesion, setcurrentProfesion] = useState<ProfesionDesc | null>();
+  const [profesion, setProfesion] = useState<string>(character?.profession ?? "");
+  const [players, setPlayers] = useState<number>(character?.numberOfPlayers ?? 2);
+  const [credit, setCredit] = useState<number>(character?.credit ?? 0);
+
+  const onSaveClick = () => {
+    //save data to local storage
+    const character = getCharacter(uuid);
+    if (!character) return;
+    character.currentStep = 2;
+    character.numberOfPlayers = players;
+    character.profession = profesion;
+    character.credit = credit
+    saveCharacter(character);
+
+    //redirect to next page
+    window.location.href = `/edit/${uuid}/step/2`;
+  }
 
   return (
     <div>
@@ -35,24 +42,23 @@ export default function EditStep1Page() {
         <form className="flex flex-col gap-5">
           <div className="flex flex-row justify-between gap-2">
             <label className="w-[150px]" htmlFor="players">Number of players</label>
-            <select className="bg-[#8d8565] rounded border px-1" name="players" id="players">
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4+">4+</option>
-            </select>
+            <PlayersSelector setPlayers={setPlayers} players={players} />
           </div>
 
           <div className="flex flex-row justify-between gap-2">
             <label className="w-[75px]" htmlFor="name">Profesion</label>
-            <ProfesionSelector setInfoMessage={setInfoMessage} setcurrentProfesion={setcurrentProfesion} />
+            <ProfesionSelector setInfoMessage={setInfoMessage} profesion={profesion} setProfesion={setProfesion} />
           </div>
 
           <div className="flex flex-row justify-between gap-2">
             <label className="w-[150px]" htmlFor="credit">Credit</label>
-            <CreditSelector setInfoMessage={setInfoMessage} currentProfesion={currentProfesion} />
+            <CreditSelector setInfoMessage={setInfoMessage} setCredit={setCredit} profesionName={profesion} character={character} credit={credit} />
           </div>
 
-          <button type="button" onClick={onSaveClick} className="bg-[#8d8565] border rounded px-2 text-white m-auto hover:bg-amber-50 hover:text-[#180f00] hover:border-black" >Save and continue</button>
+          <button type="button" onClick={() => onSaveClick()}
+            className="bg-[#8d8565] border rounded px-2 text-white m-auto hover:bg-amber-50 hover:text-[#180f00] hover:border-black" >
+            Save and continue
+          </button>
 
         </form>
       </div>

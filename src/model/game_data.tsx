@@ -7,7 +7,7 @@ export type ProfesionDesc = {
     desc: string
 }
 
-type Profesion = {
+export type Profesion = {
     [name: string]:
     ProfesionDesc
 }

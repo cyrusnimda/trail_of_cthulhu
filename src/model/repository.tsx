@@ -9,6 +9,9 @@ export type Character = {
     gender: Gender,
     currentStep: number
     picture?: string,
+    profession?: string,
+    credit?: number
+    numberOfPlayers?: number
 }
 
 export const getCharacter = (id: UUID): Character | undefined => {

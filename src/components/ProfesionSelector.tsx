@@ -1,15 +1,15 @@
 import React from 'react'
-import { profesions, ProfesionDesc } from "@/model/game_data";
-
-
+import { profesions } from "@/model/game_data";
 
 const ProfesionSelector = ({
     setInfoMessage,
-    setcurrentProfesion
+    setProfesion,
+    profesion
 }:
     {
         setInfoMessage: (message: string) => void,
-        setcurrentProfesion: (currentProfesion: ProfesionDesc) => void
+        setProfesion: (profesion: string) => void,
+        profesion: string
     }) => {
     const onProfesionChange = (e: any) => {
         const profesionName: string = e.target.value;
@@ -20,11 +20,11 @@ const ProfesionSelector = ({
             return;
         }
         setInfoMessage(profesion.desc);
-        setcurrentProfesion(profesion);
+        setProfesion(profesionName);
     }
 
     return (
-        <select onChange={onProfesionChange} className="bg-[#8d8565] rounded border px-1" name="profesions" id="profesions">
+        <select value={profesion} onChange={onProfesionChange} className="bg-[#8d8565] rounded border px-1" name="profesions" id="profesions">
             <option value="">Choose your profesion</option>
             {
                 Object.entries(profesions).map(([key, value]) => {
