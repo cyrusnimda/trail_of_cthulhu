@@ -1,8 +1,4 @@
 import React from 'react'
-import { credits } from '@/model/game_data';
-import { profesions } from "@/model/game_data";
-import { Character } from '@/model/repository';
-
 
 const PlayersSelector = ({
     players,

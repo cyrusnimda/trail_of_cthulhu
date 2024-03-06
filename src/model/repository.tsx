@@ -1,5 +1,6 @@
 'use client';
 import { UUID } from "crypto";
+import { i } from "vitest/dist/reporters-MmQN-57K.js";
 
 export type Gender = "male" | "female"
 
@@ -15,13 +16,15 @@ export type Character = {
 }
 
 export const getCharacter = (id: UUID): Character | undefined => {
-    console.log("getCharacter");
     const characters = getCharacters();
-    return characters.find((c) => c.id === id);
+    const character = characters.find((c) => c.id === id);
+    console.log("getCharacter", character);
+    return character;
 }
 
 export const getCharacters = (): Character[] => {
-    console.log("getCharacters");
+    if (typeof localStorage === "undefined") return [];
+
     const characterString: string | null = localStorage.getItem("characters");
 
     try {

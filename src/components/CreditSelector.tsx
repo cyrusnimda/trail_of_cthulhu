@@ -5,7 +5,7 @@ import { Character } from '@/model/repository';
 
 
 const CreditSelector = ({ setInfoMessage, profesionName, setCredit, character, credit }:
-    { setInfoMessage: (message: string) => void, profesionName: string, setCredit: (message: number) => void, character: Character, credit: number }) => {
+    { setInfoMessage: (message: string) => void, profesionName: string, setCredit: (message: number) => void, character: Character | undefined, credit: number }) => {
     const defaultCredits = [0, 1, 2, 3, 4, 5, 6, 7];
 
     let selectorCredits = defaultCredits

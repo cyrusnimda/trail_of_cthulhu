@@ -3,14 +3,16 @@ import { profesions } from "@/model/game_data";
 
 const ProfesionSelector = ({
     setInfoMessage,
-    setProfesion,
-    profesion
+    setProfession,
+    profession
 }:
     {
         setInfoMessage: (message: string) => void,
-        setProfesion: (profesion: string) => void,
-        profesion: string
+        setProfession: (profesion: string) => void,
+        profession: string
     }) => {
+
+    console.log("ProfesionSelector", profession);
     const onProfesionChange = (e: any) => {
         const profesionName: string = e.target.value;
 
@@ -20,11 +22,11 @@ const ProfesionSelector = ({
             return;
         }
         setInfoMessage(profesion.desc);
-        setProfesion(profesionName);
+        setProfession(profesionName);
     }
 
     return (
-        <select value={profesion} onChange={onProfesionChange} className="bg-[#8d8565] rounded border px-1" name="profesions" id="profesions">
+        <select value={profession} onChange={onProfesionChange} className="bg-[#8d8565] rounded border px-1" name="profesions" id="profesions">
             <option value="">Choose your profesion</option>
             {
                 Object.entries(profesions).map(([key, value]) => {

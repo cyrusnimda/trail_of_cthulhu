@@ -12,9 +12,12 @@
   color: white;
 }
 
+body, html, main{
+  height: 100vh;
+}
 
-body {
-  background: url("/images/background.webp");
+main {
+  background: url("/images/toc.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #312605;
