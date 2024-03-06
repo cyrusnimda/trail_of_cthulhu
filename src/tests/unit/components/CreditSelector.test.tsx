@@ -23,5 +23,6 @@ describe('CreditSelector', () => {
         screen.debug();
 
         // check if App components renders headline
+        expect(screen.getByRole('combobox')).toBeInTheDocument();
     });
 });
