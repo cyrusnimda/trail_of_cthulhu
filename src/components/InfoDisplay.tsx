@@ -4,7 +4,7 @@ const InfoDisplay = ({
     step,
     infoMessage
 }: {
-    step: string,
+    step: number | undefined,
     infoMessage: string
 }) => {
 

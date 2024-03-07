@@ -5,6 +5,7 @@ import { useState } from "react";
 import { UUID } from "crypto";
 import { getCharacter, saveCharacter, Character } from "@/model/repository";
 import CharacterCreateForm from "@/components/CharacterCreateForm";
+import StepSelector from "@/components/StepSelector";
 
 export default function EditStep1Page(params: any) {
   const uuid = params.params.id as UUID;
@@ -15,7 +16,8 @@ export default function EditStep1Page(params: any) {
   return (
 
     <div>
-      <InfoDisplay step="1" infoMessage={infoMessage} />
+      <StepSelector characterCurrentStep={character?.currentStep} currentStep={2} uuid={character?.id} />
+      <InfoDisplay step={2} infoMessage={infoMessage} />
 
       <CharacterCreateForm uuid={uuid} setInfoMessage={setInfoMessage} character={character} />
     </div >
