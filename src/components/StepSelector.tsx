@@ -14,8 +14,9 @@ const StepSelector = ({ currentStep, characterCurrentStep, uuid }: { characterCu
                     ArrayOfSteps.map((step) => {
                         const selectedStepClass = "flex flex-col items-center rounded bg-black/50 border-2 border-solid p-2" + (step === currentStep ? " border-yellow-300/75" : " border-black/75");
                         const someCondition = step > (characterCurrentStep ?? 0);
+                        console.log(step, characterCurrentStep)
                         return (
-                            <Link key={step} href={`/edit/${uuid}/step/${step}`} className={someCondition ? 'pointer-events-none opacity-50' : ''}
+                            <Link key={step} href={`/edit/${uuid}/step/${step}`} className={someCondition ? 'pointer-events-none opacity-35' : ''}
                                 aria-disabled={someCondition}
                                 tabIndex={someCondition ? -1 : undefined}>
                                 <li className={selectedStepClass}>
