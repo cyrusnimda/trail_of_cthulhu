@@ -40,3 +40,4 @@ jobs:
           whoami
           ls -al
           echo $RSYNC_STDOUT
+          pm2 restart cthulhu
