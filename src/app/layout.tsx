@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="mx-auto px-4 max-w-3xl">
           <Link href="/">
-            <h1 className="text-center text-3xl py-7">Trail of Chuthlu v2</h1>
+            <h1 className="text-center text-3xl py-7">Trail of Chuthlu</h1>
           </Link>
           {children}
         </main>
