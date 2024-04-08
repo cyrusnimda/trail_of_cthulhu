@@ -32,7 +32,7 @@ jobs:
         REMOTE_HOST: ${{ secrets.SSH_LIVE_HOST }}
         REMOTE_USER: ${{ secrets.SSH_USERNAME }}
         TARGET: "/var/www/html/cthulhu.cyrusnimda.com/"
-        EXCLUDE: ".github/, /playwright-report/, /test-results/"
+        EXCLUDE: "/.github/, /playwright-report/, /test-results/"
         SCRIPT_BEFORE: |
           whoami
           ls -al
