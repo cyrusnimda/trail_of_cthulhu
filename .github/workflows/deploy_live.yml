@@ -40,4 +40,5 @@ jobs:
           whoami
           ls -al
           echo $RSYNC_STDOUT
-          pm2 restart cthulhu
+          export PATH=$PATH:/home/josu/.nvm/versions/node/v20.12.1/bin
+          pm2 reload cthulhu

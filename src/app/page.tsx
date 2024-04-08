@@ -27,7 +27,7 @@ export default function Home() {
       <section className="flex items-center gap-5">
         {
           characters.map((character) => (
-            <Link key={character.id} href={"/edit/" + character.id + "/step/" + character.currentStep}>
+            <Link key={character.id} href={"/edit/" + character.id}>
               <div className="flex flex-col items-center border rounded border-white p-2 bg-[#8d8565]">
                 {
                   character.picture && <Image width={100} height={100} src={character.picture ?? ""} alt={`Picture of ` + character.name} className="rounded-full" />
